@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
             name = shop.name
             imageUrl = shop.logoImage
             url = if (shop.couponUrls.sp.isNotEmpty()) shop.couponUrls.sp else shop.couponUrls.pc
+
+            address = shop.address
         })
         (viewPagerAdapter.fragments[VIEW_PAGER_POSITION_FAVORITE] as FavoriteFragment).updateData()
     }
