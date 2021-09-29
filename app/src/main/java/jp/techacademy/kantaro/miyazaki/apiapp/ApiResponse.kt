@@ -1,5 +1,6 @@
 package jp.techacademy.kantaro.miyazaki.apiapp
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 data class ApiResponse(
@@ -12,7 +13,8 @@ data class Results(
     var shop: List<Shop>
 )
 
-data class Shop(
+
+data class Shop (
     @SerializedName("coupon_urls")
     val couponUrls: CouponUrls,
     @SerializedName("id")
@@ -23,11 +25,11 @@ data class Shop(
     val name: String,
     @SerializedName("address")
     val address: String
-)
+) :Serializable
 
 data class CouponUrls(
     @SerializedName("pc")
     var pc: String,
     @SerializedName("sp")
     var sp: String
-)
+) :Serializable
