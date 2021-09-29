@@ -31,6 +31,23 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         }.attach()
     }
 
+    override fun onResume() {
+        super.onResume()
+        // ViewPager2の初期化
+        viewPager2.apply {
+            adapter = viewPagerAdapter
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL // スワイプの向き横（ORIENTATION_VERTICAL を指定すれば縦スワイプで実装可能です）
+            offscreenPageLimit = viewPagerAdapter.itemCount // ViewPager2で保持する画面数
+        }
+
+        // TabLayoutの初期化
+        // TabLayoutとViewPager2を紐づける
+        // TabLayoutのTextを指定する
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            tab.setText(viewPagerAdapter.titleIds[position])
+        }.attach()
+    }
+
     override fun onClickItem(shop: Shop) {
         WebViewActivity.start1(this, shop)
     }
